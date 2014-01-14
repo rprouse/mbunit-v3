@@ -30,19 +30,10 @@
       <Inherit>true</Inherit>
     </Module>
     
-    <Module Include="$(SourceDir)\Extensions\Ambience\Ambience.module">
-      <Inherit>true</Inherit>
-    </Module>
     <Module Include="$(SourceDir)\Extensions\CCNet\CCNet.module">
       <Inherit>true</Inherit>
     </Module>
     <Module Include="$(SourceDir)\Extensions\ControlPanel\ControlPanel.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\Copy\Copy.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\DLR\DLR.module">
       <Inherit>true</Inherit>
     </Module>
     <Module Include="$(SourceDir)\Extensions\Echo\Echo.module">
@@ -64,9 +55,6 @@
       <Inherit>true</Inherit>
     </Module>	
     <Module Include="$(SourceDir)\Extensions\PowerShell\PowerShell.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\TypeMock\TypeMock.module">
       <Inherit>true</Inherit>
     </Module>
     <Module Include="$(SourceDir)\Extensions\Utility\Utility.module">
