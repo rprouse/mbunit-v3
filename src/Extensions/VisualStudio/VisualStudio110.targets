@@ -1,0 +1,32 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <VisualStudio110InstallDir>$(registry:HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\11.0\@InstallDir)</VisualStudio110InstallDir>
+
+    <VSIP110Path Condition="'$(VSIP110Path)'=='' and '$(VisualStudio110InstallDir)'!=''">$(VisualStudio110InstallDir)\PrivateAssemblies;$(VisualStudio110InstallDir)\PublicAssemblies</VSIP110Path>
+
+    <VSIP110Installed>false</VSIP110Installed>
+    <VSIP110Installed Condition="'$(VSIP110Path)'!=''">true</VSIP110Installed>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(Module)'==''">
+      <Choose>
+        <When Condition="$(VSIP110Installed)">
+          <PropertyGroup>
+            <AssemblySearchPaths>$(VSIP110Path);$(AssemblySearchPaths)</AssemblySearchPaths>
+          </PropertyGroup>
+        </When>
+        <Otherwise>
+          <PropertyGroup>
+            <BuildDependsOn>MissingVSIP110</BuildDependsOn>
+            <RebuildDependsOn>MissingVSIP110</RebuildDependsOn>
+          </PropertyGroup>
+        </Otherwise>
+      </Choose>
+    </When>
+  </Choose>
+
+  <Target Name="MissingVSIP110">
+    <Warning Text="Skipped build.  Visual Studio 2012 is not installed or could not be located." />
+  </Target>
+</Project>

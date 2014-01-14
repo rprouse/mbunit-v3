@@ -9,9 +9,6 @@
   <ItemGroup Condition="'$(DotNetFrameworkVersion)'=='4.0' and $(VSIP100Installed)">
     <CSharpProject Include="Gallio.VisualStudio.Shell\Gallio.VisualStudio.Shell100$(ProjectVariant).csproj" />
     <CSharpProject Include="Gallio.VisualStudio.Shell.Tests\Gallio.VisualStudio.Shell100.Tests$(ProjectVariant).csproj" />
-    
-    <CSharpProject Include="Gallio.VisualStudio.Sail\Gallio.VisualStudio.Sail100$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.VisualStudio.Sail.Tests\Gallio.VisualStudio.Sail100.Tests$(ProjectVariant).csproj" />
   
     <CSharpProject Include="Gallio.VisualStudio.Tip\Gallio.VisualStudio.Tip100$(ProjectVariant).csproj" />
     <CSharpProject Include="Gallio.VisualStudio.Tip.Proxy\Gallio.VisualStudio.Tip100.Proxy$(ProjectVariant).csproj" />

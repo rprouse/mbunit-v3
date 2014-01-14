@@ -1,0 +1,32 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <VisualStudio120InstallDir>$(registry:HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\12.0\@InstallDir)</VisualStudio120InstallDir>
+
+    <VSIP120Path Condition="'$(VSIP120Path)'=='' and '$(VisualStudio120InstallDir)'!=''">$(VisualStudio120InstallDir)\PrivateAssemblies;$(VisualStudio120InstallDir)\PublicAssemblies</VSIP120Path>
+
+    <VSIP120Installed>false</VSIP120Installed>
+    <VSIP120Installed Condition="'$(VSIP120Path)'!=''">true</VSIP120Installed>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(Module)'==''">
+      <Choose>
+        <When Condition="$(VSIP120Installed)">
+          <PropertyGroup>
+            <AssemblySearchPaths>$(VSIP120Path);$(AssemblySearchPaths)</AssemblySearchPaths>
+          </PropertyGroup>
+        </When>
+        <Otherwise>
+          <PropertyGroup>
+            <BuildDependsOn>MissingVSIP120</BuildDependsOn>
+            <RebuildDependsOn>MissingVSIP120</RebuildDependsOn>
+          </PropertyGroup>
+        </Otherwise>
+      </Choose>
+    </When>
+  </Choose>
+
+  <Target Name="MissingVSIP120">
+    <Warning Text="Skipped build.  Visual Studio 2013 is not installed or could not be located." />
+  </Target>
+</Project>

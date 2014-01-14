@@ -33,9 +33,6 @@
     <Module Include="$(SourceDir)\Extensions\Ambience\Ambience.module">
       <Inherit>true</Inherit>
     </Module>
-    <Module Include="$(SourceDir)\Extensions\AutoCAD\AutoCAD.module">
-      <Inherit>true</Inherit>
-    </Module>
     <Module Include="$(SourceDir)\Extensions\CCNet\CCNet.module">
       <Inherit>true</Inherit>
     </Module>
@@ -43,9 +40,6 @@
       <Inherit>true</Inherit>
     </Module>
     <Module Include="$(SourceDir)\Extensions\Copy\Copy.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\CSUnit\CSUnit.module">
       <Inherit>true</Inherit>
     </Module>
     <Module Include="$(SourceDir)\Extensions\DLR\DLR.module">
@@ -57,79 +51,19 @@
     <Module Include="$(SourceDir)\Extensions\Icarus\Icarus.module">
       <Inherit>true</Inherit>
     </Module>
-    <Module Include="$(SourceDir)\Extensions\MbUnit2\MbUnit2.module">
-      <Inherit>true</Inherit>
-    </Module>
     <Module Include="$(SourceDir)\Extensions\MbUnitCpp\MbUnitCpp.module">
       <Inherit>true</Inherit>
     </Module>
     <Module Include="$(SourceDir)\Extensions\MSBuild\MSBuild.module">
       <Inherit>true</Inherit>
     </Module>
-    <Module Include="$(SourceDir)\Extensions\MSTest\MSTest.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\NAnt\NAnt.module">
-      <Inherit>true</Inherit>
-    </Module>
     <Module Include="$(SourceDir)\Extensions\Navigator\Navigator.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\NCover\NCover.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\NUnit\NUnit248.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\NUnit\NUnit253.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\NUnit\NUnit254-10.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\NUnit\NUnitLatest.module">
       <Inherit>true</Inherit>
     </Module>
     <Module Include="$(SourceDir)\Extensions\PartCover\PartCover.module">
       <Inherit>true</Inherit>
     </Module>	
     <Module Include="$(SourceDir)\Extensions\PowerShell\PowerShell.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper31.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper40.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper41.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper45.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper50.module">
-      <Inherit>true</Inherit>
-    </Module>
-	<Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper51.module">
-      <Inherit>true</Inherit>
-    </Module>
-	<Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper60.module">
-      <Inherit>true</Inherit>
-    </Module>
-	<Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper61.module">
-      <Inherit>true</Inherit>
-    </Module>
-	<Module Include="$(SourceDir)\Extensions\ReSharper\ReSharper70.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\RSpec\RSpec.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\TDNet\TDNet.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\TeamCity\TeamCity.module">
       <Inherit>true</Inherit>
     </Module>
     <Module Include="$(SourceDir)\Extensions\TypeMock\TypeMock.module">
@@ -141,24 +75,9 @@
     <Module Include="$(SourceDir)\Extensions\VisualStudio\VisualStudio.Interop.module">
       <Inherit>true</Inherit>
     </Module>
-    <Module Include="$(SourceDir)\Extensions\VisualStudio\VisualStudio90.module">
-      <Inherit>true</Inherit>
-    </Module>
     <Module Include="$(SourceDir)\Extensions\VisualStudio\VisualStudio100.module">
       <Inherit>true</Inherit>
     </Module>
-    <Module Include="$(SourceDir)\Extensions\Xunit\Xunit161.module">
-      <Inherit>true</Inherit>
-    </Module>
-    <Module Include="$(SourceDir)\Extensions\Xunit\XunitLatest.module">
-      <Inherit>true</Inherit>
-    </Module>
-	
-    <!--
-	<Module Include="$(SourceDir)\Archimedes\Archimedes.module">
-      <Inherit>true</Inherit>
-	</Module>
-    -->
 	
 	<Module Include="$(SourceDir)\SDK\SDK.module">
       <Inherit>true</Inherit>
