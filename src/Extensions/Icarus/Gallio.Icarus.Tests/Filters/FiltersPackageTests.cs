@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Gallio.Common;
 using Gallio.Icarus.Controllers;
 using Gallio.Icarus.Controllers.Interfaces;

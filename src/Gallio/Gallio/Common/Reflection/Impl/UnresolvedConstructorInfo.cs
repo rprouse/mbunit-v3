@@ -17,11 +17,7 @@ using System;
 using System.Globalization;
 using System.Reflection;
 
-#if DOTNET40
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal sealed partial class UnresolvedConstructorInfo : ConstructorInfo, IUnresolvedCodeElement
     {
@@ -54,10 +50,5 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
         {
             throw new NotSupportedException("Cannot invoke unresolved constructor.");
         }
-
-        #region .Net 4.0 Only
-#if DOTNET40
-#endif
-        #endregion
     }
 }

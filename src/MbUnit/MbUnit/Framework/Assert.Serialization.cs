@@ -590,7 +590,7 @@ namespace MbUnit.Framework
                 {
                     CheckCharacters = false,
                     CloseInput = false,
-                    ProhibitDtd = true
+                    DtdProcessing = DtdProcessing.Prohibit
                 }))
                 {
                     try

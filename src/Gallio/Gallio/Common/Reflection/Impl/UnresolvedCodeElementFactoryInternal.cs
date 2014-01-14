@@ -18,11 +18,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
 
-#if DOTNET40
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal sealed class UnresolvedCodeElementFactoryInternal : UnresolvedCodeElementFactory
     {

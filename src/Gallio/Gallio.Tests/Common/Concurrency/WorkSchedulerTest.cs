@@ -14,15 +14,11 @@
 // limitations under the License.
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using Gallio.Common.Concurrency;
 using Gallio.Framework;
 using MbUnit.Framework;
-using Action=Gallio.Common.Action;
 
 namespace Gallio.Tests.Common.Concurrency
 {

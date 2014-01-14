@@ -26,7 +26,6 @@ using Gallio.Common.Reflection;
 using Gallio.Common.Reflection.Impl;
 using MbUnit.Framework;
 using System.Runtime.CompilerServices;
-using Action=Gallio.Common.Action;
 
 namespace Gallio.Tests.Common.Reflection
 {

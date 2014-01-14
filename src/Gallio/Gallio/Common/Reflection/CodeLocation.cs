@@ -258,6 +258,7 @@ namespace Gallio.Common.Reflection
         /// </summary>
         /// <param name="info">The serialization info to populate with data.</param>
         /// <param name="context">The destination for this serialization.</param>
+        [System.Security.SecurityCritical]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue(PathKey, path);

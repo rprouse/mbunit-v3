@@ -34,7 +34,6 @@ using Aga.Controls.Tree;
 using Gallio.UI.Tree.NodeControls;
 using Gallio.UI.Tree.Nodes;
 using MbUnit.Framework;
-using Action = Gallio.Common.Action;
 
 namespace Gallio.UI.Tests.Tree.NodeControls
 {

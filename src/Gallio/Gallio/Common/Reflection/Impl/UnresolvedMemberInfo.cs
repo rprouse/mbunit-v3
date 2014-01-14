@@ -22,11 +22,7 @@ using Gallio.Common.Collections;
  * of the unresolved reflection types because C# does not support multiple inheritance.
  */
 
-#if DOTNET40
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal static class UnresolvedMemberInfo
     {

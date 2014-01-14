@@ -19,11 +19,7 @@ using System.Globalization;
 using System.Reflection;
 using Gallio.Common.Collections;
 
-#if DOTNET40
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal sealed partial class UnresolvedPropertyInfo : PropertyInfo, IUnresolvedCodeElement
     {
@@ -142,10 +138,5 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
         {
             throw new NotSupportedException("Cannot set value of unresolved property.");
         }
-
-        #region .Net 4.0 Only
-#if DOTNET40
-#endif
-        #endregion
     }
 }

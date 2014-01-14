@@ -13,9 +13,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using Aga.Controls.Tree;
 using Aga.Controls.Tree.NodeControls;
-using Gallio.Common;
 
 namespace Gallio.Icarus.Controls
 {

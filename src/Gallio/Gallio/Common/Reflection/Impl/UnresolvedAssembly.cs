@@ -23,20 +23,12 @@ using System.Security.Permissions;
 using System.Security.Policy;
 using Gallio.Common.Collections;
 
-#if DOTNET40
 using System.Linq;
 using System.Security;
 
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
-#if DOTNET40
     internal sealed partial class UnresolvedAssembly : Assembly, IUnresolvedCodeElement, IEquatable<UnresolvedAssembly>
-#else
-    internal sealed partial class UnresolvedAssembly : AssemblyShim, IUnresolvedCodeElement, IEquatable<UnresolvedAssembly>
-#endif
     {
         private readonly IAssemblyInfo adapter;
 
@@ -46,10 +38,6 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
                 throw new ArgumentNullException("adapter");
 
             this.adapter = adapter;
-
-#if ! DOTNET40
-            DeepInitializeForDotNet20();
-#endif
         }
 
         public IAssemblyInfo Adapter
@@ -132,9 +120,8 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return adapter.GetName();
         }
 
-#if DOTNET40
+
         [SecurityCritical]
-#endif
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             throw new NotSupportedException("Cannot serialize an unresolved assembly.");
@@ -200,30 +187,6 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return adapter.GetHashCode();
         }
 
-        #region .Net 2.0 Only
-#if ! DOTNET40
-        // Hacks the assembly object to ensure it is completely initialized.
-        // This is only required for .Net 2.0.
-        [ReflectionPermission(SecurityAction.Assert, MemberAccess = true)]
-        private void DeepInitializeForDotNet20()
-        {
-            Assembly donorAssembly = typeof(UnresolvedAssembly).Assembly;
-
-            // The Assembly object contains internal pointers (such as 'm__assembly')
-            // that must be initialized to prevent exceptions if client code calls methods
-            // that we have been unable to override as part of this hack.  Of course those
-            // methods still won't work but at least we should not get an execution engine error.
-            foreach (FieldInfo field in typeof(Assembly).GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
-            {
-                object value = field.GetValue(donorAssembly);
-                field.SetValue(this, value);
-            }
-        }
-#endif
-        #endregion
-
-        #region .Net 4.0 Only
-#if DOTNET40
         public override object CreateInstance(string typeName, bool ignoreCase, BindingFlags bindingAttr, Binder binder, object[] args, CultureInfo culture, object[] activationAttributes)
         {
             throw new NotSupportedException("Cannot create instance of type in unresolved assembly.");
@@ -330,7 +293,5 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
                 throw new NotSupportedException("Cannot get permission set of unresolved assembly.");
             }
         }
-#endif
-        #endregion
     }
 }

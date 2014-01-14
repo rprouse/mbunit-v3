@@ -39,6 +39,7 @@
     <DocumentationFile>bin\MbUnit.Tests.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="NHamcrest, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NHamcrest\NHamcrest.dll</HintPath>
@@ -49,15 +50,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\AssertTest_Count.cs" />
+    <Compile Include="Framework\AsyncTests.cs" />
     <Compile Include="Framework\ContractVerifiers\Core\HashStoreResultTest.cs" />
     <Compile Include="Framework\ContractVerifiers\Core\HashStoreTest.cs" />
     <Compile Include="Framework\ContractVerifiers\HashCodeAcceptanceContractTest.cs" />
@@ -71,6 +72,8 @@
     <Compile Include="Framework\MirrorExceptionTest.cs" />
     <Compile Include="Framework\RetryTest.cs" />
     <Compile Include="Framework\SharedDataSetTest.cs" />
+    <Compile Include="Framework\XmlDataObjectCartesianTests.cs" />
+    <Compile Include="Framework\XmlDataObjectTests.cs" />
     <Compile Include="Integration\ConfigurationFileTest.cs" />
     <Compile Include="Framework\RepeatTest.cs" />
     <Compile Include="Framework\ExplicitTest.cs" />
@@ -94,10 +97,6 @@
     <ProjectReference Include="..\MbUnit.TestResources\MbUnit.TestResources.vs2010.csproj">
       <Project>{9FFB657C-7099-4594-A1DD-6E9AC5D7171E}</Project>
       <Name>MbUnit.TestResources.vs2010</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MbUnit35\MbUnit35.vs2010.csproj">
-      <Project>{D147F5CC-0166-4B9C-B095-F905220090FA}</Project>
-      <Name>MbUnit35.vs2010</Name>
     </ProjectReference>
     <ProjectReference Include="..\MbUnit\MbUnit.vs2010.csproj">
       <Project>{A9B54755-56B7-48C1-8941-BB69FCEFFF32}</Project>
@@ -225,6 +224,20 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Framework\SampleTextResource.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Framework\TestData1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Framework\TestData2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Framework\TestData3.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Framework\TestData4.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

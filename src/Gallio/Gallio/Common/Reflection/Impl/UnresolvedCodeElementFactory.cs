@@ -19,11 +19,7 @@ using System.Reflection;
 using System.Threading;
 using Gallio.Common.Platform;
 
-#if DOTNET40
-using Gallio.Common.Reflection.Impl.DotNet40;
-#else
-using Gallio.Common.Reflection.Impl.DotNet20;
-#endif
+using Gallio.Common.Reflection.Impl;
 
 namespace Gallio.Common.Reflection.Impl
 {
@@ -66,7 +62,7 @@ namespace Gallio.Common.Reflection.Impl
                             assemblyName.Name = "Gallio40";
 
                             Assembly assembly = Assembly.Load(assemblyName);
-                            Type factoryType = assembly.GetType("Gallio.Common.Reflection.Impl.DotNet40.UnresolvedCodeElementFactoryInternal");
+                            Type factoryType = assembly.GetType("Gallio.Common.Reflection.Impl.UnresolvedCodeElementFactoryInternal");
                             newInstance = (UnresolvedCodeElementFactory) Activator.CreateInstance(factoryType, true);
                         }
                         catch

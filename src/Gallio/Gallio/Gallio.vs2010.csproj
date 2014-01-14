@@ -12,9 +12,7 @@
     <AssemblyName>Gallio</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\Key.snk</AssemblyOriginatorKeyFile>
-    <SGenUseProxyTypes>false</SGenUseProxyTypes>
-    <SGenShouldGenerateSerializer>true</SGenShouldGenerateSerializer>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <RootDir>$(MSBuildProjectDirectory)\..\..\..</RootDir>
     <CustomAfterMicrosoftCommonTargets>$(RootDir)\bin\Custom.After.Microsoft.Common.targets</CustomAfterMicrosoftCommonTargets>
     <PublishUrl>http://localhost/Gallio/</PublishUrl>
@@ -32,6 +30,7 @@
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +46,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -63,6 +63,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gallio.GenericParsing">
+      <HintPath>..\libs\Gallio.GenericParsing.dll</HintPath>
+    </Reference>
     <Reference Include="Gallio.ReflectionShim, Version=0.0.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\Gallio.ReflectionShim.dll</HintPath>
@@ -91,6 +94,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\CciMetadata\Bin\Microsoft.Cci.SourceModel.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Cecil, Version=0.6.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\Mono.Cecil.dll</HintPath>
@@ -98,16 +102,17 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Accessor.cs" />
-    <Compile Include="Common\Action.cs" />
     <Compile Include="Common\Collections\EnumerableCounter.cs" />
     <Compile Include="Common\Collections\IPropertySetContainer.cs" />
     <Compile Include="Common\Comparison.cs" />
@@ -125,7 +130,11 @@
     <Compile Include="Common\IO\ContentEmbeddedResource.cs" />
     <Compile Include="Common\IO\ContentFile.cs" />
     <Compile Include="Common\IO\ContentInline.cs" />
-    <Compile Include="Common\Lazy.cs" />
+    <Compile Include="Common\Linq\ActionExtensions.cs" />
+    <Compile Include="Common\Linq\ExpressionExtensions.cs" />
+    <Compile Include="Common\Linq\ExpressionInstrumentor.cs" />
+    <Compile Include="Common\Linq\ExpressionVisitor.cs" />
+    <Compile Include="Common\Linq\NamespaceDoc.cs" />
     <Compile Include="Common\Markup\AttachmentType.cs" />
     <Compile Include="Common\Markup\MarkupNormalizationUtils.cs" />
     <Compile Include="Common\Mathematics\ChiSquareTest.cs" />
@@ -159,7 +168,6 @@
     <Compile Include="Common\Collections\EmptyArray.cs" />
     <Compile Include="Common\Collections\EmptyDictionary.cs" />
     <Compile Include="Common\Collections\GenericCollectionUtils.cs" />
-    <Compile Include="Common\Collections\HashSet.cs" />
     <Compile Include="Common\Collections\IMultiMap.cs" />
     <Compile Include="Common\Collections\Key.cs" />
     <Compile Include="Common\Collections\LazyCache.cs" />
@@ -259,6 +267,7 @@
     <Compile Include="Common\Reflection\Impl\NativeWrapper.cs" />
     <Compile Include="Common\Reflection\Impl\NamespaceDoc.cs" />
     <Compile Include="Common\Reflection\IMirror.cs" />
+    <Compile Include="Common\Reflection\Impl\UnresolvedCustomAttributeData.cs" />
     <Compile Include="Common\Reflection\NamespaceDoc.cs" />
     <Compile Include="Common\Reflection\ProxyUtils.cs" />
     <Compile Include="Common\Remoting\BaseChannel.cs" />
@@ -328,10 +337,19 @@
     <Compile Include="Common\Xml\Options.cs" />
     <Compile Include="Common\Xml\Parser.cs" />
     <Compile Include="Common\Xml\Paths\XmlPathRoot.cs" />
+    <Compile Include="Framework\Assertions\AssertionConditionEvaluator.cs" />
     <Compile Include="Framework\Assertions\AssertionFailureExplanation.cs" />
     <Compile Include="Framework\Assertions\NamespaceDoc.cs" />
     <Compile Include="Framework\Capture.cs" />
     <Compile Include="Framework\ComparisonSemantics.cs" />
+    <Compile Include="Framework\Data\DataObjects\DynamicObject.cs" />
+    <Compile Include="Framework\Data\DataObjects\FlatFileToDataTableBuilder.cs" />
+    <Compile Include="Framework\Data\DataObjects\MultipleListEnumerable.cs" />
+    <Compile Include="Framework\Data\DataObjects\TabularDataObjectFactory.cs" />
+    <Compile Include="Framework\Data\DataObjects\XmlDataObject.cs" />
+    <Compile Include="Framework\Data\DataObjects\XmlDataObjectBuilder.cs" />
+    <Compile Include="Framework\Data\DataObjects\XmlDataObjectFactory.cs" />
+    <Compile Include="Framework\Data\DataObjects\XmlDataObjectUtility.cs" />
     <Compile Include="Framework\Data\Generation\RandomRangeGenerator.cs" />
     <Compile Include="Framework\Data\Generation\SequentialInt32Generator.cs" />
     <Compile Include="Framework\Data\Generation\SequentialDoubleGenerator.cs" />
@@ -476,6 +494,8 @@
     <Compile Include="Runtime\Conversions\CustomConverters.cs" />
     <Compile Include="Runtime\Extensibility\IExtensionPoints.cs" />
     <Compile Include="Runtime\Extensibility\DefaultExtensionPoints.cs" />
+    <Compile Include="Runtime\Formatting\ExpressionFormattingRule.cs" />
+    <Compile Include="Runtime\Formatting\FormatterExtensions.cs" />
     <Compile Include="Runtime\Formatting\MemberInfoFormattingRule.cs" />
     <Compile Include="Runtime\Formatting\FormattingFunc.cs" />
     <Compile Include="Runtime\Formatting\CustomFormattingRule.cs" />
@@ -982,7 +1002,6 @@
     <Compile Include="Model\Contexts\ObservableTestLogWriter.cs" />
     <Compile Include="Model\Contexts\StubTestContext.cs" />
     <Compile Include="Model\Contexts\StubTestContextTracker.cs" />
-    <Compile Include="Common\Func.cs" />
     <Compile Include="Framework\TestException.cs" />
     <Compile Include="Framework\TestFailedException.cs" />
     <Compile Include="Framework\TestInconclusiveException.cs" />

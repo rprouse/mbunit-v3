@@ -15,6 +15,7 @@
 
 using System;
 using System.Runtime.Remoting;
+using System.Security;
 
 namespace Gallio.Common.Remoting
 {
@@ -42,6 +43,7 @@ namespace Gallio.Common.Remoting
     public abstract class LongLivedMarshalByRefObject : MarshalByRefObject
     {
         /// <inheritdoc />
+        [SecurityCritical]
         public override object InitializeLifetimeService()
         {
             return null;

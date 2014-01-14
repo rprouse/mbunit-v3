@@ -23,13 +23,9 @@ using System.Collections.Generic;
  * of the unresolved reflection types because C# does not support multiple inheritance.
  */
 
-#if DOTNET40
 using System.Linq;
 
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal static class UnresolvedCustomAttributeProvider
     {
@@ -48,14 +44,12 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return adapter.HasAttribute(Reflector.Wrap(attributeType), inherit);
         }
 
-#if DOTNET40
         public static IList<CustomAttributeData> GetCustomAttributesData(ICodeElementInfo adapter)
         {
             return (from attrib in adapter.GetAttributeInfos(null, false)
-                select (CustomAttributeData) new UnresolvedCustomAttributeData(attrib))
+                    select (CustomAttributeData)new UnresolvedCustomAttributeData( attrib ) )
                 .ToList().AsReadOnly();
         }
-#endif
     }
 
     internal partial class UnresolvedAssembly
@@ -75,12 +69,10 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return UnresolvedCustomAttributeProvider.IsDefined(adapter, attributeType, inherit);
         }
 
-#if DOTNET40
         public override IList<CustomAttributeData> GetCustomAttributesData()
         {
             return UnresolvedCustomAttributeProvider.GetCustomAttributesData(adapter);
         }
-#endif
     }
 
     internal partial class UnresolvedConstructorInfo
@@ -100,12 +92,10 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return UnresolvedCustomAttributeProvider.IsDefined(adapter, attributeType, inherit);
         }
 
-#if DOTNET40
         public override IList<CustomAttributeData> GetCustomAttributesData()
         {
             return UnresolvedCustomAttributeProvider.GetCustomAttributesData(adapter);
         }
-#endif
     }
 
     internal partial class UnresolvedEventInfo
@@ -125,12 +115,10 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return UnresolvedCustomAttributeProvider.IsDefined(adapter, attributeType, inherit);
         }
 
-#if DOTNET40
         public override IList<CustomAttributeData> GetCustomAttributesData()
         {
             return UnresolvedCustomAttributeProvider.GetCustomAttributesData(adapter);
         }
-#endif
     }
 
     internal partial class UnresolvedFieldInfo
@@ -150,12 +138,10 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return UnresolvedCustomAttributeProvider.IsDefined(adapter, attributeType, inherit);
         }
 
-#if DOTNET40
         public override IList<CustomAttributeData> GetCustomAttributesData()
         {
             return UnresolvedCustomAttributeProvider.GetCustomAttributesData(adapter);
         }
-#endif
     }
 
     internal partial class UnresolvedMethodInfo
@@ -175,12 +161,10 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return UnresolvedCustomAttributeProvider.IsDefined(adapter, attributeType, inherit);
         }
 
-#if DOTNET40
         public override IList<CustomAttributeData> GetCustomAttributesData()
         {
             return UnresolvedCustomAttributeProvider.GetCustomAttributesData(adapter);
         }
-#endif
     }
 
     internal partial class UnresolvedParameterInfo
@@ -200,12 +184,10 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return UnresolvedCustomAttributeProvider.IsDefined(adapter, attributeType, inherit);
         }
 
-#if DOTNET40
         public override IList<CustomAttributeData> GetCustomAttributesData()
         {
             return UnresolvedCustomAttributeProvider.GetCustomAttributesData(adapter);
         }
-#endif
     }
 
     internal partial class UnresolvedPropertyInfo
@@ -225,12 +207,10 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return UnresolvedCustomAttributeProvider.IsDefined(adapter, attributeType, inherit);
         }
 
-#if DOTNET40
         public override IList<CustomAttributeData> GetCustomAttributesData()
         {
             return UnresolvedCustomAttributeProvider.GetCustomAttributesData(adapter);
         }
-#endif
     }
 
     internal partial class UnresolvedType
@@ -250,11 +230,9 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return UnresolvedCustomAttributeProvider.IsDefined(adapter, attributeType, inherit);
         }
 
-#if DOTNET40
         public override IList<CustomAttributeData> GetCustomAttributesData()
         {
             return UnresolvedCustomAttributeProvider.GetCustomAttributesData(adapter);
         }
-#endif
     }
 }

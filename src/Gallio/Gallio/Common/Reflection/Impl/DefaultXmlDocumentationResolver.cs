@@ -105,7 +105,7 @@ namespace Gallio.Common.Reflection.Impl
                 settings.IgnoreProcessingInstructions = true;
                 settings.IgnoreComments = true;
                 settings.ValidationType = ValidationType.None;
-                settings.ProhibitDtd = true;
+                settings.DtdProcessing = DtdProcessing.Prohibit;
                 settings.CheckCharacters = false;
                 settings.CloseInput = true;
 

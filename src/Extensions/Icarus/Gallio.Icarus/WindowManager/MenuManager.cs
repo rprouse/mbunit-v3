@@ -13,10 +13,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Gallio.Common;
 using Gallio.UI.Menus;
 
 namespace Gallio.Icarus.WindowManager

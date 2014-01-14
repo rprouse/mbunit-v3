@@ -41,6 +41,7 @@ namespace Gallio.Common
             return "Void";
         }
 
+        [System.Security.SecurityCritical]
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.SetType(typeof(UnitHolder));
@@ -53,6 +54,7 @@ namespace Gallio.Common
             {
             }
 
+            [System.Security.SecurityCritical]
             void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
             {
                 info.SetType(typeof(UnitHolder));

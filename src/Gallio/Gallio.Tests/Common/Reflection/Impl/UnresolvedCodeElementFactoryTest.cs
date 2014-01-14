@@ -27,14 +27,12 @@ namespace Gallio.Tests.Common.Reflection.Impl
     public class UnresolvedCodeElementFactoryTest
     {
         [Test]
-        public void Instance_WhenRuntimeIsDotNet20_ReturnsDotNet20Instance()
+        public void Instance_WhenRuntimeIsDotNet40_ReturnsDotNet40Instance()
         {
-            if (DotNetFrameworkSupport.FrameworkVersion != DotNetFrameworkVersion.DotNet40
-                && DotNetFrameworkSupport.FrameworkVersion != DotNetFrameworkVersion.DotNet35
-                && DotNetFrameworkSupport.FrameworkVersion != DotNetFrameworkVersion.DotNet20)
+            if ( DotNetFrameworkSupport.FrameworkVersion != DotNetFrameworkVersion.DotNet40 )
                 return;
 
-            Assert.IsInstanceOfType<Gallio.Common.Reflection.Impl.DotNet20.UnresolvedCodeElementFactoryInternal>(UnresolvedCodeElementFactory.Instance);
+            Assert.IsInstanceOfType<Gallio.Common.Reflection.Impl.UnresolvedCodeElementFactoryInternal>( UnresolvedCodeElementFactory.Instance );
         }
     }
 }

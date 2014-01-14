@@ -1,4 +1,5 @@
-﻿using Gallio.Common;
+﻿using System;
+using Gallio.Common;
 using Gallio.Icarus.Annotations;
 using Gallio.Icarus.Controllers.Interfaces;
 using Gallio.Icarus.ExecutionLog;

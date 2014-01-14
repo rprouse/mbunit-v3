@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using Gallio.Common;
 using Gallio.Icarus.TestExplorer;
 using Gallio.Icarus.Tests.WindowManager;

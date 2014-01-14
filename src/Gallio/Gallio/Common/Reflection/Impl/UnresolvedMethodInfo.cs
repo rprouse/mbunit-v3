@@ -16,11 +16,7 @@
 using System;
 using System.Reflection;
 
-#if DOTNET40
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal sealed partial class UnresolvedMethodInfo : MethodInfo, IUnresolvedCodeElement
     {
@@ -82,10 +78,5 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
         {
             return adapter.MakeGenericMethod(Reflector.Wrap(typeArguments)).Resolve(false);
         }
-
-        #region .Net 4.0 Only
-#if DOTNET40
-#endif
-        #endregion
     }
 }

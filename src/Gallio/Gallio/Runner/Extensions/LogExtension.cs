@@ -14,8 +14,8 @@
 // limitations under the License.
 
 using System;
+using System.Collections.Generic;
 using System.Text;
-using Gallio.Common.Collections;
 using Gallio.Common.Markup;
 using Gallio.Model.Tree;
 using Gallio.Runner.Events;
@@ -23,7 +23,6 @@ using Gallio.Runner.Reports.Schema;
 using Gallio.Runtime.Logging;
 using Gallio.Model;
 using Gallio.Model.Schema;
-using Gallio.Common.Reflection;
 
 namespace Gallio.Runner.Extensions
 {

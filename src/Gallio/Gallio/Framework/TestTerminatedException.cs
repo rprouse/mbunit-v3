@@ -85,6 +85,7 @@ namespace Gallio.Framework
         }
 
         /// <inheritdoc />
+        [System.Security.SecurityCritical]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);

@@ -25,11 +25,7 @@ using System.Security;
  * of the unresolved reflection types because C# does not support multiple inheritance.
  */
 
-#if DOTNET40
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal static class UnresolvedMethodBase
     {
@@ -77,9 +73,7 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return Type.EmptyTypes;
         }
 
-#if DOTNET40
         [SecuritySafeCritical]
-#endif
         public override MethodBody GetMethodBody()
         {
             throw new NotSupportedException("Cannot get method body of unresolved constructor.");
@@ -101,8 +95,6 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             throw new NotSupportedException("Cannot invoke unresolved constructor.");
         }
 
-        #region .Net 4.0 Only
-#if DOTNET40
         public override bool IsSecurityCritical
         {
             get { return false; }
@@ -117,8 +109,6 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
         {
             get { return false; }
         }
-#endif
-        #endregion
     }
 
     internal partial class UnresolvedMethodInfo
@@ -159,9 +149,7 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
                 delegate(ITypeInfo parameter) { return parameter.Resolve(false); });
         }
 
-#if DOTNET40
         [SecuritySafeCritical]
-#endif
         public override MethodBody GetMethodBody()
         {
             throw new NotSupportedException("Cannot get method body of unresolved method.");
@@ -183,8 +171,6 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             throw new NotSupportedException("Cannot invoke unresolved method.");
         }
 
-        #region .Net 4.0 Only
-#if DOTNET40
         public override bool IsSecurityCritical
         {
             get { return false; }
@@ -199,7 +185,5 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
         {
             get { return false; }
         }
-#endif
-        #endregion
     }
 }

@@ -18,11 +18,7 @@ using System.Globalization;
 using System.Reflection;
 using Gallio.Common.Collections;
 
-#if DOTNET40
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal sealed partial class UnresolvedFieldInfo : FieldInfo, IUnresolvedCodeElement
     {
@@ -102,8 +98,6 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             throw new NotSupportedException("Cannot set value of unresolved field.");
         }
 
-        #region .Net 4.0 Only
-#if DOTNET40
         public override bool IsSecurityCritical
         {
             get { return false; }
@@ -118,7 +112,5 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
         {
             get { return false; }
         }
-#endif
-        #endregion
     }
 }

@@ -16,11 +16,9 @@
 using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Security.Permissions;
 using Gallio.Common.Reflection;
 using Gallio.Common.Reflection.Impl;
 using MbUnit.Framework;
-using Gallio.Common.Reflection.Impl.DotNet20;
 
 namespace Gallio.Tests.Common.Reflection
 {

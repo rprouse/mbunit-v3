@@ -14,13 +14,9 @@
 // limitations under the License.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Gallio.Framework;
 using Gallio.Framework.Assertions;
 using Gallio.Common.Diagnostics;
-using Action=Gallio.Common.Action;
 using System.Reflection;
 using System.IO;
 

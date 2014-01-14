@@ -12,7 +12,8 @@
     <AssemblyName>Gallio.Tests</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../../Key.snk</AssemblyOriginatorKeyFile>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +39,7 @@
     <DocumentationFile>bin\Gallio.Tests.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="NHamcrest, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31c3ea0b6fcf8c4a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MbUnit\lib\NHamcrest\NHamcrest.dll</HintPath>
@@ -52,14 +54,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ActionChainTestForTwoParameters.cs" />
@@ -175,6 +176,8 @@
     <Compile Include="Framework\CompositePatternAttributeTest.cs" />
     <Compile Include="Framework\CustomEqualityComparersTest.cs" />
     <Compile Include="Framework\CustomComparersTest.cs" />
+    <Compile Include="Framework\Data\DataObjects\TabularDataHeaderNameTranslationTests.cs" />
+    <Compile Include="Framework\Data\DataObjects\TabularFactoryDataTests.cs" />
     <Compile Include="Framework\Data\Generation\SequentialInt32GeneratorTest.cs" />
     <Compile Include="Framework\Data\Generation\SequentialDoubleGeneratorTest.cs" />
     <Compile Include="Framework\Data\Generation\RandomInt32GeneratorTest.cs" />
@@ -428,10 +431,6 @@
       <Project>{9FFB657C-7099-4594-A1DD-6E9AC5D7171E}</Project>
       <Name>MbUnit.TestResources.vs2010</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MbUnit\MbUnit35\MbUnit35.vs2010.csproj">
-      <Project>{D147F5CC-0166-4B9C-B095-F905220090FA}</Project>
-      <Name>MbUnit35.vs2010</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\MbUnit\MbUnit\MbUnit.vs2010.csproj">
       <Project>{A9B54755-56B7-48C1-8941-BB69FCEFFF32}</Project>
       <Name>MbUnit.vs2010</Name>
@@ -444,10 +443,6 @@
       <Project>{399C33BF-A9F7-4390-8F9C-8EECF7814123}</Project>
       <Name>Gallio.Reports.vs2010</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gallio35\Gallio35.vs2010.csproj">
-      <Project>{BC28AB7E-5B71-4AEE-BF2D-54ACF7299889}</Project>
-      <Name>Gallio35.vs2010</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Gallio\Gallio.vs2010.csproj">
       <Project>{6CAB7735-05DA-480D-9A04-50615B00F886}</Project>
       <Name>Gallio.vs2010</Name>
@@ -455,6 +450,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\SampleTemplate.vm" />
+    <None Include="Framework\Data\DataObjects\HeaderNames.csv" />
+    <None Include="Framework\Data\DataObjects\TestFileWithCommas.csv" />
+    <None Include="Framework\Data\DataObjects\TestFileWithQuotes.csv" />
+    <None Include="Framework\Data\DataObjects\TestXlsData.csv" />
     <None Include="Resources\SampleIcon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -463,6 +462,7 @@
   <ItemGroup>
     <None Include="Resources\CommandLineArgumentAttributeTests_NotAStringResource.ico" />
     <EmbeddedResource Include="Common\Xml\Paths\SolarSystem.xml" />
+    <Content Include="Framework\Data\DataObjects\TestXlsData.txt" />
     <Content Include="Reports\Diagnostic.xslt" />
     <EmbeddedResource Include="Common\IO\SampleResource.txt" />
     <None Include="Gallio.Tests.dll.config">

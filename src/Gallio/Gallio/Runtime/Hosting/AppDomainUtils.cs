@@ -91,6 +91,8 @@ namespace Gallio.Runtime.Hosting
             if (appDomain == null)
                 throw new ArgumentNullException("appDomain");
 
+            // FIX
+#pragma warning disable 618
             Assembly assembly = type.Assembly;
             try
             {
@@ -103,6 +105,7 @@ namespace Gallio.Runtime.Hosting
                 return appDomain.CreateInstanceFromAndUnwrap(assemblyFile, type.FullName, false,
                     BindingFlags.Default, null, args, null, null, null);
             }
+#pragma warning restore 618
         }
     }
 }

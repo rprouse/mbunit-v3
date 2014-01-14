@@ -15,8 +15,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Gallio.Framework;
 using Gallio.Framework.Pattern;
 using Gallio.Model;
@@ -25,7 +23,6 @@ using Gallio.Common.Reflection;
 using Gallio.Runner.Reports.Schema;
 using Gallio.Tests;
 using MbUnit.Framework;
-using Action=Gallio.Common.Action;
 
 namespace MbUnit.Tests.Framework
 {

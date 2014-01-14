@@ -17,11 +17,7 @@ using System;
 using System.Reflection;
 using Gallio.Common.Collections;
 
-#if DOTNET40
-namespace Gallio.Common.Reflection.Impl.DotNet40
-#else
-namespace Gallio.Common.Reflection.Impl.DotNet20
-#endif
+namespace Gallio.Common.Reflection.Impl
 {
     internal sealed partial class UnresolvedParameterInfo : ParameterInfo, IUnresolvedCodeElement
     {
@@ -106,13 +102,9 @@ namespace Gallio.Common.Reflection.Impl.DotNet20
             return adapter.ToString();
         }
 
-        #region .Net 4.0 Only
-#if DOTNET40
         public override int MetadataToken
         {
             get { throw new NotSupportedException("Cannot get metadata token of unresolved parameter."); }
         }
-#endif
-        #endregion
     }
 }

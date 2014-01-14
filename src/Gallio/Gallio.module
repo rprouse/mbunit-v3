@@ -3,7 +3,6 @@
 
   <ItemGroup>
     <CSharpProject Include="Gallio\Gallio$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio35\Gallio35$(ProjectVariant).csproj" />
     <CSharpProject Include="Gallio.Host\Gallio.Host$(ProjectVariant).csproj" />
     <CSharpProject Include="Gallio.Tests\Gallio.Tests$(ProjectVariant).csproj" />
     <CSharpProject Include="Gallio.Reports\Gallio.Reports$(ProjectVariant).csproj" />
@@ -68,19 +67,6 @@
       <ImagePath>bin</ImagePath>
     </ConfigFile>
     
-    <AssemblyFile Include="Gallio35\bin\Gallio35.dll">
-      <ImagePath>bin</ImagePath>
-    </AssemblyFile>
-    <PdbFile Include="Gallio35\bin\Gallio35.pdb">
-      <ImagePath>bin</ImagePath>
-    </PdbFile>
-    <XmlDocFile Include="Gallio35\bin\Gallio35.xml">
-      <ImagePath>bin</ImagePath>
-    </XmlDocFile>
-    <PluginFile Include="Gallio35\Gallio35.plugin">
-      <ImagePath>bin</ImagePath>
-    </PluginFile>
-    
     <AssemblyFile Include="Gallio.UI\bin\Gallio.UI.dll">
       <ImagePath>bin</ImagePath>
     </AssemblyFile>
@@ -138,32 +124,12 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(DotNetFrameworkVersion)'=='4.0'">
-    <CSharpProject Include="Gallio40\Gallio40$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio40.Tests\Gallio40.Tests$(ProjectVariant).csproj" />
     
-    <!-- Reenable when we have some content.
-    <XmlDocFile Include="Gallio40\bin\Gallio40.dll">
-    -->
-    <File Include="Gallio40\bin\Gallio40.xml">
-      <ImagePath>bin</ImagePath>
-    </File>
-    
-    <AssemblyFile Include="Gallio40\bin\Gallio40.dll">
-      <ImagePath>bin</ImagePath>
-    </AssemblyFile>
-    <PdbFile Include="Gallio40\bin\Gallio40.pdb">
-      <ImagePath>bin</ImagePath>
-    </PdbFile>
-    <PluginFile Include="Gallio40\Gallio40.plugin">
-      <ImagePath>bin</ImagePath>
-    </PluginFile>
 	<AssemblyFile Include="libs\Gallio.GenericParsing.dll">
       <ImagePath>bin</ImagePath>
     </AssemblyFile>
 	
     <Feature Include="FEATURE_GALLIO40" />
-    
-    <TestAssembly Include="Gallio40.Tests\bin\Gallio40.Tests.dll" />
   </ItemGroup>
   
   <Target 
@@ -232,10 +198,6 @@
     
     <Copy 
       SourceFiles="Gallio\bin\Gallio.dll;Gallio\bin\Gallio.pdb;Gallio\bin\Gallio.XmlSerializers.dll"
-      DestinationImagePath="$(ModuleTempDir)" />
-
-    <Copy 
-      SourceFiles="Gallio40\bin\Gallio40.dll;Gallio40\bin\Gallio40.pdb;Gallio40\bin\Gallio40.XmlSerializers.dll"
       DestinationImagePath="$(ModuleTempDir)" />
 	  
     <Copy 
