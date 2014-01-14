@@ -49,7 +49,7 @@ using System.Security;
 // This isn't enough to ensure that we properly support partially trusted
 // contexts but it's a beginning.  We also need to carefully review security
 // demands throughout the framework and especially calls back into core services.
-[assembly: AllowPartiallyTrustedCallers]
+//[assembly: AllowPartiallyTrustedCallers]
 
 // The neutral resources language is US English.
 // Telling the system that this is the case yields a small performance improvement during startup.
