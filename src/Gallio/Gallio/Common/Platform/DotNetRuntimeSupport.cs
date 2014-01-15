@@ -152,7 +152,7 @@ namespace Gallio.Common.Platform
 
                 string runtimeVersion = (string) RegistryUtils.GetValueWithBitness(
                     ProcessorArchitecture.None, RegistryHive.LocalMachine,
-                    @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4.0",
+                    @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full",
                     "Version", null);
                 return runtimeVersion != null ? "v" + runtimeVersion : null;
             }
