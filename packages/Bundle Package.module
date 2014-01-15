@@ -66,6 +66,7 @@
     <Installer Include="GallioBundle" />
   </ItemGroup>
   
+  <!-- FIX
   <ItemGroup Condition="'$(SkipSandcastle)'!='true'">
     <Feature Include="FEATURE_CHM_HELP" />
     <Feature Include="FEATURE_VS_HELP" />
@@ -76,6 +77,7 @@
       <WebDocsDir>$(ModuleDistDir)\APIDocs\$(FileVersion)</WebDocsDir>
     </Sandcastle>
   </ItemGroup>
+  -->
   
   <Target Name="BeforeTest"
           DependsOnTargets="VerifyInstallation" />

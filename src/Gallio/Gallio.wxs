@@ -69,20 +69,6 @@
                 <File Name="Gallio.ReflectionShim.dll" />
                 <?endif ?>
             </Component>
-            <Component Id="Gallio35" Guid="{015c2236-433f-45f4-86d8-88b87f7fad26}" Win64="$(var.Win64Binary)">
-                <File Name="Gallio35.dll" KeyPath="yes" />
-                <File Name="Gallio35.plugin" />
-                <File Name="Gallio35.pdb" />
-                <File Name="Gallio35.xml" />
-            </Component>
-            <?ifdef FEATURE_GALLIO40?>
-            <Component Id="Gallio40" Guid="{830C1A43-888C-4E3B-BFC0-D59D086A4B2B}" Win64="$(var.Win64Binary)">
-                <File Name="Gallio40.dll" KeyPath="yes" />
-                <File Name="Gallio40.plugin" />
-                <File Name="Gallio40.pdb" />
-                <File Name="Gallio40.xml" />
-            </Component>
-            <?endif?>
             <Component Id="Gallio.XmlSerializers" Guid="{1F8F8C04-E8CF-478c-AD16-9D90921C71A5}" Win64="$(var.Win64Binary)">
                 <File Name="Gallio.XmlSerializers.dll" KeyPath="yes" />
             </Component>
@@ -215,7 +201,7 @@
 				</Component>
             </Directory>
 		</DirectoryRef>
-
+<!--
         <DirectoryRef Id="docsFolder" FileSource="$(var.GallioTargetDir)\docs\">
 <?ifdef FEATURE_CHM_HELP ?>
             <Component Id="Gallio.chm" Guid="{37BEC1CB-8141-4793-8CFF-986AC4849EB9}" Win64="$(var.Win64Binary)">
@@ -244,7 +230,6 @@
             </Directory>
 <?endif?>
         </DirectoryRef>
-
         <DirectoryRef Id="extrasFolder">
 <?ifdef FEATURE_VS_HELP ?>
             <Directory Id='H2RegDir' Name='H2Reg'>
@@ -256,14 +241,11 @@
             </Directory>
 <?endif?>
         </DirectoryRef>
+-->
 
         <Feature Id="feat_Gallio" Title="Gallio" Level="1" InstallDefault="local" TypicalDefault="install" Absent="disallow" AllowAdvertise="no"
                  Description="Installs the Gallio test automation platform." ConfigurableDirectory="INSTALLDIR" Display="2">
             <ComponentRef Id="Gallio" />
-            <ComponentRef Id="Gallio35" />
-            <?ifdef FEATURE_GALLIO40?>
-            <ComponentRef Id="Gallio40" />
-            <?endif?>
             <ComponentRef Id="Gallio.XmlSerializers" />
             <ComponentRef Id="Gallio.Host" />
             <ComponentRef Id="Gallio.Host.x86" />
@@ -328,6 +310,7 @@
             <ProgressText Action="Setup.Uninstall" Template="[1]">Uninstalling components ...</ProgressText>
         </UI>
 
+        <!--
 <?ifdef FEATURE_CHM_HELP ?>
         <Feature Id="feat_Gallio.Help" Title="Standalone Help Docs" Level="1" Description="Installs the standalone help documentation CHM file." AllowAdvertise="no">
             <ComponentRef Id="Gallio.chm" />
@@ -365,5 +348,6 @@
             <ProgressText Action="H2Reg.Uninstall" Template="[1]">Uninstalling help files from Visual Studio ...</ProgressText>
         </UI>
 <?endif?>
+-->
     </Fragment>
 </Wix>
