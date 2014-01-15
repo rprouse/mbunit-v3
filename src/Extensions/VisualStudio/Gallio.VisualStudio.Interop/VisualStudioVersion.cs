@@ -30,16 +30,6 @@ namespace Gallio.VisualStudio.Interop
         Any = 0,
 
         /// <summary>
-        /// Visual Studio 2005.
-        /// </summary>
-        VS2005 = 1,
-
-        /// <summary>
-        /// Visual Studio 2008.
-        /// </summary>
-        VS2008 = 2,
-
-        /// <summary>
         /// Visual Studio 2010.
         /// </summary>
         VS2010 = 3,

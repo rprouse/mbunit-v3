@@ -74,10 +74,9 @@ namespace Gallio.VisualStudio.Interop.Tests
             var logger = new MarkupStreamLogger(TestLog.Default);
 
             var versions = new[] {
-                VisualStudioVersion.VS2005,
-                VisualStudioVersion.VS2008,
                 VisualStudioVersion.VS2010,
                 VisualStudioVersion.VS2012,
+                VisualStudioVersion.VS2013
             };
 
             foreach (VisualStudioVersion version in versions)
