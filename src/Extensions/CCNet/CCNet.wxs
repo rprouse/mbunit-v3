@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <?include ..\..\Installer\Common.wxi ?>
-
+<!-- FIX
     <Fragment>
         <DirectoryRef Id="extrasFolder" FileSource="$(var.GallioTargetDir)\extras\">
             <Directory Id="CCNet" Name="CCNet">
@@ -20,4 +20,5 @@
 	    <ComponentRef Id="CCNet.GallioReports.zip" />
         </Feature>
     </Fragment>
+    -->
 </Wix>

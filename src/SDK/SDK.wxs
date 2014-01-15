@@ -9,9 +9,11 @@
                 <File Name="Readme.txt" KeyPath="yes" />
             </Component>
 
+            <!-- FIX
             <Component Id="SDK.ReportSchema" Guid="{553A5CC5-CEB5-4c33-A504-1BFC393EF8CC}" Win64="$(var.Win64Binary)">
                 <File Name="Gallio.xsd" KeyPath="yes" />
             </Component>
+            -->
 
 			<Directory Id="SDK.Loader" Name="Loader">
 				<Component Id="SDK.Loader" Guid="{296EB7F2-F747-4808-A28B-558C66BF6CDB}" Win64="$(var.Win64Binary)">
@@ -35,7 +37,9 @@
         <Feature Id="feat_SDK" Title="Gallio SDK" Level="1" Display="20" AllowAdvertise="no"
                  Description="Installs the Gallio SDK components for developers.">
             <ComponentRef Id='SDK.Readme'/>
+            <!-- FIX
             <ComponentRef Id='SDK.ReportSchema'/>
+            -->
             <ComponentRef Id='SDK.Loader'/>
             <ComponentRef Id='SDK.Testing'/>
         </Feature>
