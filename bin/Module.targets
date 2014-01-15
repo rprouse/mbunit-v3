@@ -142,13 +142,7 @@
     <DotNetFrameworkVersion Condition="'$(DotNetFrameworkVersion)'=='' and Exists('$(SystemRoot)\Microsoft.Net\Framework\v4.0.30319\MSBuild.exe')">4.0</DotNetFrameworkVersion>
     <DotNetFrameworkVersion Condition="'$(DotNetFrameworkVersion)'==''">3.5</DotNetFrameworkVersion>
     
-    <ProjectVariant></ProjectVariant>
-    <ProjectVariant Condition="'$(DotNetFrameworkVersion)'=='4.0'">.vs2010</ProjectVariant>
-    <ProjectVariantExplicit>.vs2008</ProjectVariantExplicit>
-    <ProjectVariantExplicit Condition="'$(DotNetFrameworkVersion)'=='4.0'">.vs2010</ProjectVariantExplicit>
-    
     <TestRunnerType Condition="'$(TestRunnerType)'=='' and '$(SkipCodeCoverage)'=='true'">IsolatedProcess</TestRunnerType>
-    <TestRunnerType Condition="'$(TestRunnerType)'==''">NCover3</TestRunnerType>
     <TestReportTypes>Xml;Html-Condensed</TestReportTypes>
   </PropertyGroup>
   
@@ -194,27 +188,12 @@
   <!-- Preconditions -->
   
   <Target Name="MainPrecondition"
-          DependsOnTargets="VerifyRootDirIsSet;VerifyProjectsSynchronized" />
+          DependsOnTargets="VerifyRootDirIsSet" />
   
   <Target Name="VerifyRootDirIsSet">
     <Error Condition="'$(RootDir)'==''"
 	       Text="RootDir must be set." />
-  </Target>  
-  
-  <Target Name="VerifyProjectsSynchronized"
-          Condition="'$(Main)'=='true' and '$(SkipSyncProjects)'!='true'">
-    <Message Text="Verifying that all VS 2008 and VS 2010 projects are synchronized...%0D%0ASkip this with '/p:SkipSyncProjects=true'."
-             Importance="High" />
-
-    <Exec Command="&quot;$(SourceDir)\Compare VS2010 Projects.bat&quot;"
-          IgnoreExitCode="true"
-	  WorkingDirectory="$(SourceDir)">
-      <Output TaskParameter="ExitCode" PropertyName="ExitCode" />
-    </Exec>
-    
-    <Error Text="There appear to be some differences between the project items of the VS 2008 projects and those of the VS 2010 projects.  Please run 'Sync VS2010 Projects.bat' to synchronize project items.%0D%0ASkip this with '/p:SkipSyncProjects=true'."
-             Condition="'$(ExitCode)'!='0' and ! $(IgnoreTestFailures)" />
-  </Target>  
+  </Target> 
   
   <!-- Banner Text -->
   
@@ -609,9 +588,6 @@
     <RemoveDir Directories="@(_ExportArchiveTempDir)" />
 
     <MakeDir Directories="@(_ExportArchiveTempDir->'%(RootDir)%(Directory)')" />
-
-    <SvnExport RepositoryPath="%(ExportArchive.FullPath)"
-               LocalPath="$(ModuleTempDir)\%(ExportArchive.ImagePath)" />
 
     <CreateItem Include="$(ModuleImageDir)\%(ExportArchive.ImagePath)">
       <Output TaskParameter="Include" ItemName="_ExportArchiveZipFile" />
