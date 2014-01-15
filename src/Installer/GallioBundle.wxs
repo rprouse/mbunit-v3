@@ -117,38 +117,14 @@
             </Component>
         </DirectoryRef>
 
-        <CustomActionRef Id="VS2005Setup" />
-        <CustomActionRef Id="VS90Setup" />
-        <CustomActionRef Id="VS100Setup" />
-
         <InstallExecuteSequence>
             <FindRelatedProducts Before="LaunchConditions" />
             <RemoveExistingProducts After="InstallInitialize" />
-
-            <Custom Action="VS2005Setup" Before="InstallFinalize"><![CDATA[(&feat_MbUnit3.Templates.VS2005 > 1) AND VS2005DEVENV <> ""]]></Custom>
-    
-<?ifdef FEATURE_VISUALSTUDIO_90?>
-            <Custom Action="VS90Setup" Before="InstallFinalize"><![CDATA[(&feat_Gallio.VisualStudio.VS90 > 1 OR &feat_MbUnit3.Templates.VS2008 > 1) AND VS90DEVENV <> ""]]></Custom>
-<?else?>
-            <Custom Action="VS90Setup" Before="InstallFinalize"><![CDATA[(&feat_MbUnit3.Templates.VS2008 > 1) AND VS90DEVENV <> ""]]></Custom>
-<?endif?>
-
-<?ifdef FEATURE_VISUALSTUDIO_100?>
-            <Custom Action="VS100Setup" Before="InstallFinalize"><![CDATA[(&feat_Gallio.VisualStudio.VS100 > 1 OR &feat_MbUnit3.Templates.VS2010 > 1) AND VS100DEVENV <> ""]]></Custom>
-<?else?>
-            <Custom Action="VS100Setup" Before="InstallFinalize"><![CDATA[(&feat_MbUnit3.Templates.VS2010 > 1) AND VS100DEVENV <> ""]]></Custom>
-<?endif?>
         </InstallExecuteSequence>
 
         <InstallUISequence>
             <FindRelatedProducts Before="LaunchConditions" />
         </InstallUISequence>
-
-        <UI>
-            <ProgressText Action="VS2005Setup" Template="[1]">Updating Visual Studio 2005 registration ...</ProgressText>
-            <ProgressText Action="VS90Setup" Template="[1]">Updating Visual Studio 2008 registration ...</ProgressText>
-            <ProgressText Action="VS100Setup" Template="[1]">Updating Visual Studio 2010 registration ...</ProgressText>
-        </UI>
 
         <!-- Define the features in the bundle -->
         
@@ -165,71 +141,27 @@
         
         <FeatureRef Id='feat_Gallio'> <!-- Display="2" -->
             <FeatureRef Id='feat_Gallio.VisualStudio.Interop'/>
-<?ifdef FEATURE_DLR_INTEGRATION ?>
-            <FeatureRef Id='feat_Gallio.DLRIntegration'/>
-<?endif?>
         </FeatureRef>
 
-        <FeatureRef Id='feat_MbUnit3'> <!-- Display="4" -->
-            <FeatureRef Id='feat_MbUnit3.Templates.VS2005'/>
-            <FeatureRef Id='feat_MbUnit3.Templates.VS2008'/>
+        <!--
+        <FeatureRef Id='feat_MbUnit3'>
             <FeatureRef Id='feat_MbUnit3.Templates.VS2010'/>
         </FeatureRef>
-
-<?ifdef FEATURE_ARCHIMEDES ?>
-        <FeatureRef Id='feat_Archimedes'> <!-- Display="6" -->
-        </FeatureRef>
-<?endif?>
 		
         <Feature Id='feat_FrameworkAdapters' Title="Test Framework Adapters" Level="1" Display="8" AllowAdvertise="no">
-            <FeatureRef Id='feat_CSUnitAdapter'/>
-            <FeatureRef Id='feat_MbUnit2Adapter'/>
-<?ifdef FEATURE_MSTEST_ADAPTER ?>
-            <FeatureRef Id='feat_MSTestAdapter'/>
-<?endif?>
-            <FeatureRef Id='feat_NUnitAdapter'/>
-<?ifdef FEATURE_RSPEC_ADAPTER ?>
-            <FeatureRef Id='feat_RSpecAdapter'/>
-<?endif?>
-            <FeatureRef Id='feat_XunitAdapter'/>
             <FeatureRef Id='feat_MbUnitCppAdapter'/>
         </Feature>
+        -->
 
         <Feature Id='feat_Runners' Title='Test Runners' Level="1" Display="10" AllowAdvertise="no">
             <FeatureRef Id='feat_Gallio.Echo'/>
             <FeatureRef Id='feat_Gallio.Icarus'/>
             <FeatureRef Id='feat_Gallio.MsBuildTasks'/>
-            <FeatureRef Id='feat_Gallio.NAntTasks'/>
             <FeatureRef Id='feat_Gallio.PowerShellCommands'/>
-            <FeatureRef Id='feat_Gallio.TDNet'/>
-
-<?ifdef FEATURE_RESHARPER_RUNNER ?>
-            <FeatureRef Id="feat_Gallio.ReSharper" />
-<?endif?>
-
-<?ifdef FEATURE_VISUALSTUDIO ?>
-            <FeatureRef Id='feat_Gallio.VisualStudio'/>
-<?endif?>
-        </Feature>
-
-        <Feature Id='feat_Tools' Title='Test Tools' Level="1" Display="12" AllowAdvertise="no">
-<?ifdef FEATURE_AUTOCAD ?>
-            <FeatureRef Id='feat_Gallio.AutoCAD'/>
-<?endif?>
-<?ifdef FEATURE_COPY ?>
-            <FeatureRef Id="feat_Gallio.Copy"/>
-<?endif?>
-<?ifdef FEATURE_AMBIENCE ?>
-            <FeatureRef Id="feat_Gallio.Ambience"/>
-<?endif?>
             <FeatureRef Id='feat_Navigator'/>
-<?ifdef FEATURE_NCOVER_INTEGRATION ?>
-            <FeatureRef Id='feat_NCoverIntegration'/>
-<?endif?>
-            <FeatureRef Id='feat_TeamCityIntegration'/>
-            <FeatureRef Id='feat_TypeMockIntegration'/>
         </Feature>
 
+        <!--
         <Feature Id='feat_Docs' Title='Documentation' Level="1" Display="14" AllowAdvertise="no">
 <?ifdef FEATURE_CHM_HELP ?>
             <FeatureRef Id='feat_Gallio.Help'/>
@@ -238,6 +170,7 @@
             <FeatureRef Id='feat_Gallio.VSHelp'/>
 <?endif?>
         </Feature>
+        -->
 
         <Feature Id="feat_Samples" Title='Samples' Level="1" Display="16" AllowAdvertise="no">
             <ComponentRef Id="SamplesMenuFolder.RemoveFolder"/>
@@ -245,9 +178,11 @@
             <FeatureRef Id='feat_MbUnit3.Samples'/>
         </Feature>
 
+        <!-- FIX
         <Feature Id='feat_Extras' Title='Extras' Level="1" Display="18" AllowAdvertise="no">
             <FeatureRef Id='feat_CCNetExtensions'/>
         </Feature>
+        -->
 
 <?ifdef FEATURE_SDK ?>
         <FeatureRef Id='feat_SDK'> <!-- Display="20" -->
