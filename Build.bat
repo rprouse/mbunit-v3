@@ -14,7 +14,6 @@ if not defined MSBUILD_ARGS (
 )
 
 call :FIND_MSBUILD %SystemRoot%\Microsoft.Net\Framework\v4.0.30319\MSBuild.exe
-call :FIND_MSBUILD %SystemRoot%\Microsoft.Net\Framework\v3.5\MSBuild.exe
 if not defined MSBUILD (
   echo Could not find path to MSBuild.exe.
   exit /b 1
@@ -22,7 +21,7 @@ if not defined MSBUILD (
 
 call :SANITIZE ROOT_DIR
 
-"%MSBUILD%" /nologo /clp:NoSummary /p:"RootDir=%ROOT_DIR%" %MSBUILD_ARGS%
+"%MSBUILD%" /nologo /clp:NoSummary /p:"RootDir=%ROOT_DIR%";Platform=AnyCPU /p:SkipSourceServer=true %MSBUILD_ARGS%
 
 if errorlevel 1 (
   echo Failed!
