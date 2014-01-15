@@ -105,7 +105,9 @@ namespace Gallio.Tests.Runtime.Hosting
         public void WhenRuntimeVersionIsDotNet20_RunsInDotNet20()
         {
             if (DotNetRuntimeSupport.IsUsingMono)
-                Assert.Inconclusive("This test makes no sense on Mono.");
+                Assert.Inconclusive( "This test makes no sense on Mono." );
+            if ( DotNetRuntimeSupport.InstalledDotNet20RuntimeVersion == null )
+                Assert.Inconclusive( "This test requires .Net 2.0 to be installed." );
 
             HostSetup hostSetup = new HostSetup();
             hostSetup.RuntimeVersion = DotNetRuntimeSupport.InstalledDotNet20RuntimeVersion;
