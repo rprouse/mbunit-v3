@@ -2,8 +2,8 @@
   <Import Project="$(RootDir)\bin\Module.targets" />
   
   <ItemGroup>
-    <CSharpProject Include="Gallio.Echo\Gallio.Echo$(ProjectVariant).csproj" />    
-    <CSharpProject Include="Gallio.Echo.Tests\Gallio.Echo.Tests$(ProjectVariant).csproj" />
+    <CSharpProject Include="Gallio.Echo\Gallio.Echo.csproj" />    
+    <CSharpProject Include="Gallio.Echo.Tests\Gallio.Echo.Tests.csproj" />
     
     <AssemblyFile Include="Gallio.Echo\bin\Gallio.Echo.exe">
       <ImagePath>bin</ImagePath>

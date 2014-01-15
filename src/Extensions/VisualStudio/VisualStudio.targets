@@ -1,9 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
-  <Import Project="VisualStudio90.targets" />
-  <Import Project="VisualStudio100.targets" />
+  <Import Project="VisualStudio120.targets" />
 
   <PropertyGroup>
     <VSIPInstalled>false</VSIPInstalled>
-    <VSIPInstalled Condition="$(VSIP90Installed) or $(VSIP100Installed)">true</VSIPInstalled>
+    <VSIPInstalled Condition="$(VSIP120Installed)">true</VSIPInstalled>
   </PropertyGroup>
 </Project>

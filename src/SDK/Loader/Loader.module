@@ -2,7 +2,7 @@
   <Import Project="$(RootDir)\bin\Module.targets" />
 
   <ItemGroup>
-    <CSharpProject Include="Gallio.Loader$(ProjectVariant).csproj" />
+    <CSharpProject Include="Gallio.Loader.csproj" />
   
     <File Include="Gallio.Loader.cs">
       <ImagePath>sdk\Loader</ImagePath>

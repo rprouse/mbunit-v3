@@ -2,8 +2,8 @@
   <Import Project="$(RootDir)\bin\Module.targets" />
   
   <ItemGroup>
-    <CSharpProject Include="Gallio.MbUnitCppAdapter\Gallio.MbUnitCppAdapter$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.MbUnitCppAdapter.Tests\Gallio.MbUnitCppAdapter.Tests$(ProjectVariant).csproj" />
+    <CSharpProject Include="Gallio.MbUnitCppAdapter\Gallio.MbUnitCppAdapter.csproj" />
+    <CSharpProject Include="Gallio.MbUnitCppAdapter.Tests\Gallio.MbUnitCppAdapter.Tests.csproj" />
     
     <AssemblyFile Include="Gallio.MbUnitCppAdapter\bin\Gallio.MbUnitCppAdapter.dll">
       <ImagePath>bin\MbUnitCpp</ImagePath>

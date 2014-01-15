@@ -2,8 +2,8 @@
   <Import Project="$(RootDir)\bin\Module.targets" />
   
   <ItemGroup>
-    <CSharpProject Include="Gallio.Navigator\Gallio.Navigator$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.Navigator.Tests\Gallio.Navigator.Tests$(ProjectVariant).csproj" />
+    <CSharpProject Include="Gallio.Navigator\Gallio.Navigator.csproj" />
+    <CSharpProject Include="Gallio.Navigator.Tests\Gallio.Navigator.Tests.csproj" />
     
     <AssemblyFile Include="Gallio.Navigator\bin\Gallio.Navigator.exe">
       <ImagePath>bin</ImagePath>

@@ -2,8 +2,8 @@
   <Import Project="$(RootDir)\bin\Module.targets" />
   
   <ItemGroup>
-    <CSharpProject Include="Gallio.PowerShellCommands\Gallio.PowerShellCommands$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.PowerShellCommands.Tests\Gallio.PowerShellCommands.Tests$(ProjectVariant).csproj" />
+    <CSharpProject Include="Gallio.PowerShellCommands\Gallio.PowerShellCommands.csproj" />
+    <CSharpProject Include="Gallio.PowerShellCommands.Tests\Gallio.PowerShellCommands.Tests.csproj" />
     
     <PluginFile Include="Gallio.PowerShellCommands\Gallio.PowerShellCommands.plugin">
       <ImagePath>bin</ImagePath>

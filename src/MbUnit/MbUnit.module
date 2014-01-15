@@ -4,13 +4,13 @@
   <ItemGroup>
     <Module Include="..\Gallio\Gallio.module" />
     
-    <CSharpProject Include="MbUnit\MbUnit$(ProjectVariant).csproj" />
-    <CSharpProject Include="MbUnit.Compatibility\MbUnit.Compatibility$(ProjectVariant).csproj" />
+    <CSharpProject Include="MbUnit\MbUnit.csproj" />
+    <CSharpProject Include="MbUnit.Compatibility\MbUnit.Compatibility.csproj" />
     
-    <CSharpProject Include="MbUnit.TestResources\MbUnit.TestResources$(ProjectVariant).csproj" />
-    <CSharpProject Include="MbUnit.TestResources.x86\MbUnit.TestResources.x86$(ProjectVariant).csproj" />
-    <CSharpProject Include="MbUnit.TestResources.x64\MbUnit.TestResources.x64$(ProjectVariant).csproj" />
-    <CSharpProject Include="MbUnit.Tests\MbUnit.Tests$(ProjectVariant).csproj" />
+    <CSharpProject Include="MbUnit.TestResources\MbUnit.TestResources.csproj" />
+    <CSharpProject Include="MbUnit.TestResources.x86\MbUnit.TestResources.x86.csproj" />
+    <CSharpProject Include="MbUnit.TestResources.x64\MbUnit.TestResources.x64.csproj" />
+    <CSharpProject Include="MbUnit.Tests\MbUnit.Tests.csproj" />
     
     <File Include="MbUnit Website.url" />
     

@@ -2,12 +2,12 @@
   <Import Project="$(RootDir)\bin\Module.targets" />
 
   <ItemGroup>
-    <CSharpProject Include="Gallio\Gallio$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.Host\Gallio.Host$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.Tests\Gallio.Tests$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.Reports\Gallio.Reports$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.UI\Gallio.UI$(ProjectVariant).csproj" />
-    <CSharpProject Include="Gallio.UI.Tests\Gallio.UI.Tests$(ProjectVariant).csproj" />
+    <CSharpProject Include="Gallio\Gallio.csproj" />
+    <CSharpProject Include="Gallio.Host\Gallio.Host.csproj" />
+    <CSharpProject Include="Gallio.Tests\Gallio.Tests.csproj" />
+    <CSharpProject Include="Gallio.Reports\Gallio.Reports.csproj" />
+    <CSharpProject Include="Gallio.UI\Gallio.UI.csproj" />
+    <CSharpProject Include="Gallio.UI.Tests\Gallio.UI.Tests.csproj" />
     
     <File Include="Gallio Website.url" />
   
@@ -151,7 +151,7 @@
       Importance="High" />
     
     <Exec 
-      Command="&quot;$(ToolsDir)\ILMerge\ILMerge.exe&quot; &quot;Gallio.Reports\bin\Gallio.Reports.dll&quot; @(GallioReportsMergeDependency->'&quot;%(Identity)&quot;', ' ') /internalize &quot;/out:$(ModuleTempDir)\Gallio.Reports.dll&quot; &quot;/keyfile:$(SourceDir)\Key.snk&quot;" />
+      Command="&quot;$(ToolsDir)\ILMerge\ILMerge.exe&quot; &quot;Gallio.Reports\bin\Gallio.Reports.dll&quot; @(GallioReportsMergeDependency->'&quot;%(Identity)&quot;', ' ') /internalize &quot;/out:$(ModuleTempDir)\Gallio.Reports.dll&quot; &quot;/keyfile:$(SourceDir)\Key.snk&quot; /targetplatform:v4,C:\Windows\Microsoft.NET\Framework\v4.0.30319" />
       
   </Target>
 
@@ -177,7 +177,7 @@
       Importance="High" />
 
     <Exec 
-      Command="&quot;$(ToolsDir)\ILMerge\ILMerge.exe&quot; &quot;Gallio\bin\Gallio.dll&quot; @(GallioMergeDependency->'&quot;%(Identity)&quot;', ' ') /internalize &quot;/out:$(ModuleTempDir)\Gallio.dll&quot; &quot;/keyfile:$(SourceDir)\Key.snk&quot;" />
+      Command="&quot;$(ToolsDir)\ILMerge\ILMerge.exe&quot; &quot;Gallio\bin\Gallio.dll&quot; @(GallioMergeDependency->'&quot;%(Identity)&quot;', ' ') /internalize &quot;/out:$(ModuleTempDir)\Gallio.dll&quot; &quot;/keyfile:$(SourceDir)\Key.snk&quot; /targetplatform:v4,C:\Windows\Microsoft.NET\Framework\v4.0.30319" />
 	
     <!-- Important: Running ILMerge changes the ModuleVersionId of Gallio.dll so we need to regenerate Gallio.XmlSerializers.dll -->
     <SGenMultipleTypes 

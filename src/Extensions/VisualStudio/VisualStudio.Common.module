@@ -4,7 +4,7 @@
   <Import Project="VisualStudio100.targets" />
   
   <ItemGroup Condition="$(VSIP90Installed) or $(VSIP100Installed)">
-    <CSharpProject Include="Gallio.VisualStudio.Shell.Common\Gallio.VisualStudio.Shell$(ProjectVariant).csproj" />
+    <CSharpProject Include="Gallio.VisualStudio.Shell.Common\Gallio.VisualStudio.Shell.csproj" />
 
     <AssemblyFile Include="Gallio.VisualStudio.Shell.Common\bin\Gallio.VisualStudio.Shell.dll">
       <ImagePath>bin\VisualStudio</ImagePath>

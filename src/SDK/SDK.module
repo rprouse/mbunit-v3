@@ -19,6 +19,7 @@
     <Feature Include="FEATURE_SDK" />
   </ItemGroup>
   
+  <!-- FIX
   <Target Name="AfterImage"
           DependsOnTargets="GallioImage_XSD" />
   
@@ -33,4 +34,5 @@
     <Copy SourceFiles="$(ModuleTempDir)\schema0.xsd"
           DestinationFiles="$(ModuleImageDir)\sdk\Gallio.xsd" />
   </Target>
+  -->
 </Project>

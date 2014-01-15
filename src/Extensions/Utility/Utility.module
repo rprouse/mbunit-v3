@@ -2,7 +2,7 @@
   <Import Project="$(RootDir)\bin\Module.targets" />
   
   <ItemGroup>
-    <CSharpProject Include="Gallio.Utility\Gallio.Utility$(ProjectVariant).csproj" />
+    <CSharpProject Include="Gallio.Utility\Gallio.Utility.csproj" />
 
     <AssemblyFile Include="Gallio.Utility\bin\Gallio.Utility.exe">
       <ImagePath>bin</ImagePath>
