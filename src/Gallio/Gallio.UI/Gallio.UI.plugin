@@ -20,9 +20,6 @@
     
     <file path="Aga.Controls.dll" />
     <file path="WeifenLuo.WinFormsUI.Docking.dll" />
-    
-    <file path="Gallio.Common.Splash.dll" />
-    <file path="Gallio.Common.Splash.xml" />
   </files>
 
   <assemblies>

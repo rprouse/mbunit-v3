@@ -6,7 +6,6 @@
   -->
 
   <!-- Custom Tasks -->
-  
   <PropertyGroup>
     <MSBuildCommunityTasksPath>$(RootDir)\tools\MSBuild Community Tasks</MSBuildCommunityTasksPath>    
   </PropertyGroup>
@@ -625,13 +624,7 @@
 
   <PropertyGroup>
     <GallioInstallDir Condition="'$(GallioInstallDir)'==''">$(ModuleImageDir)</GallioInstallDir>
-	
-	<!-- Work around the fact that MSBuild runs as an x86 process on x64 so we see the 32bit registry view. -->
-	<NCoverInstallDir Condition="'$(NCoverInstallDir)'=='' and Exists('C:\Program Files\NCover\Build Task Plugins\NCover.MSBuildTasks.dll')">C:\Program Files\NCover</NCoverInstallDir>
-    <NCoverInstallDir Condition="'$(NCoverInstallDir)'==''">$(Registry:HKEY_LOCAL_MACHINE\Software\Gnoso\NCover\@InstallDir)</NCoverInstallDir>
   </PropertyGroup>
-  <UsingTask TaskName="NCover.MSBuildTasks.NCoverReporting"
-             AssemblyFile="$(NCoverInstallDir)\Build Task Plugins\NCover.MSBuildTasks.dll" />
   <UsingTask TaskName="Gallio.MSBuildTasks.Gallio"
              AssemblyFile="$(GallioInstallDir)\bin\Gallio.MSBuildTasks.dll" />
   
@@ -663,25 +656,6 @@
   
   <Target Name="RunMergedTestAssemblyItemsWithGallio"
           Condition="'$(Main)'=='true' and '@(MergedTestAssembly)'!=''">
-    <PropertyGroup>
-      <_TestCoverageFilters>
-      </_TestCoverageFilters>
-      <_TestSatisfactoryCoverage>
-        <Threshold>
-            <CoverageMetric>SymbolCoverage</CoverageMetric>
-            <Value>95.0</Value>
-        </Threshold>
-        <Threshold>
-            <CoverageMetric>MethodCoverage</CoverageMetric>
-            <Value>70</Value>
-        </Threshold>
-        <Threshold>
-            <CoverageMetric>BranchCoverage</CoverageMetric>
-            <Value>75</Value>
-        </Threshold>
-      </_TestSatisfactoryCoverage>
-      <_TestCoverageFile>$(ModuleTempDir)\Coverage.xml</_TestCoverageFile>
-    </PropertyGroup>
     
     <Message Text="Running tests..."
              Importance="High" />
@@ -693,30 +667,12 @@
             ReportDirectory="$(ModuleReportDir)"
             ReportTypes="$(TestReportTypes)"
             RunnerType="$(TestRunnerType)"
-            RunnerProperties="NCoverCoverageFile='$(_TestCoverageFile)';NCoverArguments='//eas .*.Tests%3B.*.TestResources%3BJetBrains.*%3BAga.Controls%3BConfiguration%3BDevExpress.*%3BEnvDTE.*%3BNAnt.*%3BcsUnit.*%3Bnunit.*%3Bxunit.*%3BQuickGraph.*%3BMbUnit.Framework%3BRhino.Mocks%3BTestDriven.Framework%3BWeifenLuo.*%3Blog4net%3BISymWrapper%3BICSharpCode.TextEditor%3BIronRuby.*%3BIronPython.* //et Castle.*%3BMono.*%3BCecil.*%3BSharpen.*%3BDb4objects.*%3BICSharpCode.*'"
             ShowReports="$(ShowReports)"
             Verbosity="Verbose"
             IgnoreFailures="true"
             RunTimeLimit="2700">
       <Output TaskParameter="ExitCode" PropertyName="ExitCode" />
     </Gallio>
-
-    <NCoverReporting Condition="'$(SkipCodeCoverage)'!='true' and Exists('$(_TestCoverageFile)')"
-                     CoverageDataPaths="$(_TestCoverageFile)"
-                     OutputPath="$(ModuleReportDir)\CoverageReport.xml"
-                     ProjectName="Gallio"
-                     ReportDataFilter="Assembly, Namespace"
-                     ReportFormat="Xml"
-                     ReportType="SymbolModuleNamespaceClassMethod"
-                     SortBy="ClassLine"
-                     MaxTopUncoveredToReport="20"
-                     CoverageFilters="$(_TestCoverageFilters)"
-                     SatisfactoryCoverage="$(_TestSatisfactoryCoverage)" />
-                     
-    <!--
-    <Exec Command="cscript //nologo &quot;$(BinDir)\Run.vbs&quot; &quot;'$(NCoverInstallDir)\NCover.Explorer.exe' $(_TestCoverageFile)&quot;"
-          Condition="$(ShowReports) and $(Coverage) and Exists('Coverage.xml')" />
-    -->
 
     <Error Text="Some tests failed!"
              Condition="'$(ExitCode)'!='0' and ! $(IgnoreTestFailures)" />

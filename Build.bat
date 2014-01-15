@@ -21,7 +21,7 @@ if not defined MSBUILD (
 
 call :SANITIZE ROOT_DIR
 
-"%MSBUILD%" /nologo /clp:NoSummary /p:"RootDir=%ROOT_DIR%";Platform=AnyCPU /p:SkipSourceServer=true %MSBUILD_ARGS%
+"%MSBUILD%" /nologo /clp:NoSummary /p:"RootDir=%ROOT_DIR%";Platform=AnyCPU;TargetFramework=v4.0 /p:SkipSourceServer=true %MSBUILD_ARGS%
 
 if errorlevel 1 (
   echo Failed!
