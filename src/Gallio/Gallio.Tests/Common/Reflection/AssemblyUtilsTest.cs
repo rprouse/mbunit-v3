@@ -209,7 +209,7 @@ namespace Gallio.Tests.Common.Reflection
             AssemblyMetadata metadata = AssemblyUtils.GetAssemblyMetadata(path, AssemblyMetadataFields.RuntimeVersion);
 
             Assembly assembly = typeof(SimpleTest).Assembly;
-            Assert.AreEqual("v2.0.50727", metadata.RuntimeVersion);
+            Assert.AreEqual( "v4.0.30319", metadata.RuntimeVersion );
         }
     }
 }
